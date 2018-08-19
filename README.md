@@ -38,9 +38,11 @@ Deploying to Heroku requires that you have both Git and the Heroku CLI installed
 You will also need a Heroku account
 
 1. Install Heroku CLI and Git
-[Git installation -](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git && https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
-[Heroku CLI -](https://devcenter.heroku.com/articles/getting-started-with-python)
-[Sign up -](https://signup.heroku.com/dc)
+
+*[Git installation -](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git]
+*[Git getting started-] https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+*[Heroku CLI -](https://devcenter.heroku.com/articles/getting-started-with-python)
+*[Sign up -](https://signup.heroku.com/dc)
 
 
 2. If you have not already done so, clone the application and cd into the project folder folder
