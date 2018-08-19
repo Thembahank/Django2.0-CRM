@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "af8c4f2c0200ab54637bedca28d41a0c5a2d9c1edc56c597a2156a30f43b7994"
+            "sha256": "3383e0cbcc34fc96fda5ee8b6f8e08c2f1e892e0cf6d68e9990c9996ffb423c9"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -137,6 +137,14 @@
         "django-simple-pagination": {
             "git": "git://github.com/Thembahank/django-simple-pagination",
             "ref": "83480a4c933b6fa9eefe136835d5492756daaf5c"
+        },
+        "gunicorn": {
+            "hashes": [
+                "sha256:aa8e0b40b4157b36a5df5e599f45c9c76d6af43845ba3b3b0efe2c70473c2471",
+                "sha256:fa2662097c66f920f53f70621c6c58ca4a3c4d3434205e608e121b5b3b71f4f3"
+            ],
+            "index": "pypi",
+            "version": "==19.9.0"
         },
         "idna": {
             "hashes": [

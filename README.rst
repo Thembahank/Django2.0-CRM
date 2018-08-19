@@ -7,26 +7,13 @@ Docs at http://django-crm.readthedocs.io for latest documentation
 
 Forked for Docker development and heroku from https://github.com/MicroPyramid/Django-CRM
 
-This project contains the following modules.
 
-   * Contacts
-   * Accounts
-   * Cases
-   * Leads
-   * Opportunity
-   * Planner
-
-Django 2.07 and Bootstrap 4
-
-Installation - Requirements
+Tech stack
 ===========================
-
-
+Django 2.07 and Bootstrap 4
 
 Development locally without docker
 ===========================
-
-
 git clone
 
 ###Inside your virtual environment run:###
@@ -39,21 +26,6 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 
-
-Development on docker
-===========================
-
-Install docker and start a machine
-cd into the Django-CRM folder with the Dockerfile
-docker build -t djangocrm:v1
-docker-compose up
-
-Any issues
-
-DOCKER_OPTS="--dns 8.8.8.8"
-docker-machine restart
-
-
 Deploy to Heroku
 ===========================
 
@@ -62,7 +34,7 @@ You will also need a Heroku account
 
 1. Install Heroku CLI and Git
 Git - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git && https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
-Heroku CLI - https://devcenter.heroku.com/articles/getting-started-with-python#set-up
+Heroku CLI - https://devcenter.heroku.com/articles/getting-started-with-python
 Sign up - https://signup.heroku.com/dc
 
 
@@ -81,12 +53,45 @@ $ heroku create
 $ git push heroku master
 
 
+5.Run the app locally using heroku
+$ python manage.py collectstatic
+$ heroku local web -f Procfile.windows
+$ heroku local web
+
+6. Make changes and update heroku
+if you are installing new packages use pipenv to install so that your pipfile.lock is updated
+git add .
+git commit -m "Changes to xx"
+git push heroku master
 
 
 
+Development on docker
+===========================
+Advantage if you don't have postgres installed locally and don't want to deal with the small bits
 
+1. Install docker and start a machine - https://docs.docker.com/install/
 
+2. cd into the project folder with the Dockerfile
 
+3. Modify database configuration settings.py
+  'HOST':'127.0.0.1' to   'HOST':'db'
+  If postgres cannot resolve hostname 'db' then use 'HOST':'{insert-your-docker-machine-ip}'
+  You can run $ docker-machine ip in your terminal to check machine ip
+
+4. Build the image and start containers
+$ docker build -t djangocrm:v1
+$ docker-compose up
+
+That's it. Project should be running at localhost:8000 or {insert-your-docker-machine-ip}:8000
+
+Potential issues
+
+Issues with pip
+There are some issues with pip on docker referred to here just run
+
+$ DOCKER_OPTS="--dns 8.8.8.8"
+$ docker-machine restart
 
 
 
