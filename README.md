@@ -4,7 +4,7 @@ Django CRM is opensourse CRM developed on django framework.
 
 Docs at http://django-crm.readthedocs.io for latest documentation
 
-Forked from[Micropyramid](https://github.com/MicroPyramid/Django-CRM) changes include:
+Forked from [Micropyramid](https://github.com/MicroPyramid/Django-CRM) changes include:
  Docker for local development
  Deployment to heroku
  Django compress and sass not used
@@ -15,9 +15,14 @@ Django 2.0 and Bootstrap 4
 
 ## Development locally without docker
 
+1. Clone the project
+```
 git clone https://yourname@bitbucket.org/digibri/crm.git
+```
+2. Install postgres and create database with the relevant config found in settings.py
+[Tutorials here](https://tutorial-extensions.djangogirls.org/en/optional_postgresql_installation/) and [here](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04)
 
-###### Inside your virtual environment run:
+3. Create your virtual environment and run:
 ```
 pip install pipenv
 pipenv install -r requirements.txt
@@ -33,14 +38,14 @@ Deploying to Heroku requires that you have both Git and the Heroku CLI installed
 You will also need a Heroku account
 
 1. Install Heroku CLI and Git
-Git - [link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git && https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
-Heroku CLI - [link](https://devcenter.heroku.com/articles/getting-started-with-python)
-Sign up - [link](https://signup.heroku.com/dc)
+[Git installation -](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git && https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+[Heroku CLI -](https://devcenter.heroku.com/articles/getting-started-with-python)
+[Sign up -](https://signup.heroku.com/dc)
 
 
 2. If you have not already done so, clone the application and cd into the project folder folder
 ```
-git clone ""
+git clone https://yourprofile@bitbucket.org/digibri/crm.git
 ```
 
 3. Login in to your Heroku account with
@@ -74,7 +79,7 @@ git push heroku master
 
 ## Development on docker
 
-1. Install docker and start a machine - [link](https://docs.docker.com/install/)
+1. Install docker and start a machine - [Docker installation](https://docs.docker.com/install/)
 
 2. cd into the project folder with the Dockerfile
 
