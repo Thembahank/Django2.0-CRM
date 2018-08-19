@@ -186,3 +186,4 @@ SG_PWD = os.getenv('SG_PWD', '')
 
 MANDRILL_API_KEY = os.getenv('MANDRILL_API_KEY', '')
 
+django_heroku.settings(locals())

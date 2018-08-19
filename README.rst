@@ -78,6 +78,8 @@ Password:
 
 4. Create an app on Heroku, which prepares Heroku to receive your source code:
 $ heroku create
+$ git push heroku master
+
 
 
 
