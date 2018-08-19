@@ -157,7 +157,7 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-COMPRESS_ROOT = BASE_DIR + '/static/'
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 COMPRESS_URL = STATIC_URL
 COMPRESS_ENABLED = True
 
