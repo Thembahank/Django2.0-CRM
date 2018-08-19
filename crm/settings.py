@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': '127.0.0.1',# change this to 'db' or your machine ip
+        'HOST': '127.0.0.1',# change this to 'db' or your machine ip when developing using docker
         'PASSWORD': 'password',
         'PORT': 5432  # default postgres port
     }
