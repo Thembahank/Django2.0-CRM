@@ -40,9 +40,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -152,26 +151,6 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
 ]
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
-
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-COMPRESS_URL = STATIC_URL
-COMPRESS_ENABLED = True
-
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
-COMPRESS_REBUILD_TIMEOUT = 5400
-
-COMPRESS_OUTPUT_DIR = 'CACHE'
-
-
-COMPRESS_OFFLINE_CONTEXT = {
-    'STATIC_URL': 'STATIC_URL',
-}
-
 DEFAULT_FROM_EMAIL = 'no-reply@django-crm.micropyramid.com'
 MAIL_SENDER = 'AMAZON'
 INACTIVE_MAIL_SENDER = 'MANDRILL'
@@ -187,10 +166,5 @@ SG_USER = os.getenv('SG_USER', '')
 SG_PWD = os.getenv('SG_PWD', '')
 
 MANDRILL_API_KEY = os.getenv('MANDRILL_API_KEY', '')
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
