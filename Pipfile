@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django-simple-pagination = {git = "git://github.com/Thembahank/django-simple-pagination"}
 pytz = "==2018.3"
+gunicorn = "*"
 "psycopg2-binary" = "==2.7.4"
 redis = "*"
 coverage = "*"
