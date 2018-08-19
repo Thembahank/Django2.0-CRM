@@ -1,16 +1,38 @@
-version: '1.0'
+version: '3'
+
+volumes:
+  postgres_data_local: {}
+  postgres_backup_local: {}
 
 services:
   db:
     image: postgres
-    volumes:
-      - /home/db:/var/lib/postgresql/data
-  dockertest:
-    build: .
-    image: micropyramid/django-crm:1
     environment:
-      - DJANGO_SETTINGS_MODULE=crm.dev_settings
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    hostname: db
+    volumes:
+      - postgres_data_local:/var/lib/postgresql/data
+      - postgres_backup_local:/backups
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    image: djangocrm:v2
+    restart: always
     ports:
       - "8000:8000"
+    networks:
+      - webnet
     depends_on:
       - db
+    links:
+      - db
+    command: python manage.py collectstatic --noinput &&
+    command: python manage.py makemigrations
+    command: python manage.py migrate
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+networks:
+  webnet:

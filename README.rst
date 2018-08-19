@@ -1,42 +1,11 @@
 Django-CRM
 ==========
 
-Django CRM is opensourse CRM developed on django framework. It has all the basic features of CRM to start with. We welcome code contributions and feature requests via github.
+Django CRM is opensourse CRM developed on django framework.
 
-.. list-table::
-   :header-rows: 1
-   :widths: 30 30 50
-   :stub-columns: 1
+Docs at http://django-crm.readthedocs.io for latest documentation
 
-   *  -  Build Status
-      -  Codacy
-      -  Support
-   *  -   .. image:: https://travis-ci.org/MicroPyramid/Django-CRM.svg?branch=master
-             :target: https://travis-ci.org/MicroPyramid/Django-CRM
-             :alt: Travis
-
-          .. image:: https://landscape.io/github/MicroPyramid/Django-CRM/master/landscape.svg?style=flat
-             :target: https://landscape.io/github/MicroPyramid/Django-CRM/master
-             :alt: Code Health
-
-      -  .. image:: https://api.codacy.com/project/badge/Grade/b11da5f09dd542479fd3bd53944595d2
-            :target: https://app.codacy.com/project/ashwin/Django-CRM/dashboard
-            :alt: Codacy Dashboard
-         .. image:: https://api.codacy.com/project/badge/Coverage/b11da5f09dd542479fd3bd53944595d2
-            :target: https://app.codacy.com/project/ashwin/Django-CRM/dashboard
-            :alt: Codacy Coverage
-      -  .. image:: https://badges.gitter.im/Micropyramid/Django-CRM.png
-            :target: https://gitter.im/MicroPyramid/Django-CRM
-            :alt: Gitter
-         .. image:: https://www.codetriage.com/micropyramid/django-crm/badges/users.svg
-            :target: https://www.codetriage.com/micropyramid/django-crm
-            :alt: Code Helpers
-         .. image:: https://img.shields.io/github/license/MicroPyramid/Django-CRM.svg
-            :target: https://pypi.python.org/pypi/Django-CRM/
-
-
-http://django-crm.readthedocs.io for latest documentation
-
+Forked for Docker development and heroku from https://github.com/MicroPyramid/Django-CRM
 
 This project contains the following modules.
 
@@ -47,39 +16,95 @@ This project contains the following modules.
    * Opportunity
    * Planner
 
+Django 2.07 and Bootstrap 4
 
 Installation - Requirements
 ===========================
 
 
-Ubuntu 64bit - 16.04
---------------------
-$ sudo apt-get update && apt-get upgrade -y
 
-$ sudo apt-get install -y curl wget libpq-dev python3-dev gem ruby ruby-dev build-essential libssl-dev libffi-dev python-dev python-virtualenv python-pip git redis-server libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev libharfbuzz-dev libfribidi-dev tcl8.6-dev tk8.6-dev python-tk
-
-$ sudo gem install sass
+Development locally without docker
+===========================
 
 
-If you cloned the package from git use virtualenv to install requirements::
+git clone
 
-    pip install -r requirements.txt
+###Inside your virtual environment run:###
 
-Visit our Django web development page [Here](https://micropyramid.com/django-ecommerce-development/)
+pip install pipenv
+pipenv install -r requirements.txt
 
-Demo Available `here`_.
+python manage.py collectstatic --noinput
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver 0.0.0.0:8000
 
-Demo credentials for Django CRM:
 
-  * **Email:** admin@micropyramid.com
-  * **Password:** admin
+Development on docker
+===========================
 
-Feature requests and bug reports
-================================
-We welcome your feedback and support, raise github issue if you want to report a bug or request new feature. we are glad to help.
+Install docker and start a machine
+cd into the Django-CRM folder with the Dockerfile
+docker build -t djangocrm:v1
+docker-compose up
 
-Need additional commercial support? `Contact us here`_
+Any issues
 
-.. _contact us here: https://micropyramid.com/contact-us/
+DOCKER_OPTS="--dns 8.8.8.8"
+docker-machine restart
 
-.. _here: https://django-crm.micropyramid.com/
+
+Deploy to Heroku
+===========================
+
+Deploying to Heroku requires that you have both Git and the Heroku CLI installed.
+You will also need a Heroku account
+
+1. Install Heroku CLI and Git
+Git - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git && https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+Heroku CLI - https://devcenter.heroku.com/articles/getting-started-with-python#set-up
+Sign up - https://signup.heroku.com/dc
+
+
+2. If you have not already done so, clone the application and cd into the project folder folder
+git clone ""
+
+
+3. Login in to your Heroku account with
+$ heroku login
+Enter your Heroku credentials
+Email: user@example.com
+Password:
+
+4. Create an app on Heroku, which prepares Heroku to receive your source code:
+$ heroku create
+
+
+
+
+
+
+
+
+
+
+Potential issues on docker
+
+https://docs.docker.com/compose/startup-order/
+
+
+Test
+===========================
+  - python manage.py test
+  - coverage run --source=accounts,common manage.py test accounts common
+  - coverage xml
+  - pytest
+  - python-codacy-coverage -r coverage.xml
+
+
+
+
+docker-machine create --driver virtualbox myvm1 # Create a VM (Mac, Win7, Linux)
+docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" myvm1 # Win10
+eval("C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env myvm1)
+https://github.com/moby/moby/issues/26330

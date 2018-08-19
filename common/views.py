@@ -130,7 +130,7 @@ class UsersListView(AdminRequiredMixin, TemplateView):
         return self.render_to_response(context)
 
 
-class CreateUserView(AdminRequiredMixin, CreateView):
+class CreateUserView(CreateView):
     model = User
     form_class = UserForm
     template_name = "create.html"
@@ -201,4 +201,3 @@ class UserDeleteView(AdminRequiredMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return redirect("common:users_list")
- 
