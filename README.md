@@ -39,10 +39,10 @@ You will also need a Heroku account
 
 1. Install Heroku CLI and Git
 
-*[Git installation -](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git]
-*[Git getting started-] https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
-*[Heroku CLI -](https://devcenter.heroku.com/articles/getting-started-with-python)
-*[Sign up -](https://signup.heroku.com/dc)
+i. [Git installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+ii. [Git getting started](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+iii.[Heroku CLI installation](https://devcenter.heroku.com/articles/getting-started-with-python)
+iv. [Sign up link](https://signup.heroku.com/dc)
 
 
 2. If you have not already done so, clone the application and cd into the project folder folder
@@ -83,7 +83,10 @@ git push heroku master
 
 1. Install docker and start a machine - [Docker installation](https://docs.docker.com/install/)
 
-2. cd into the project folder with the Dockerfile
+2. Clone the project and cd into the project folder that has the Dockerfile
+```
+git clone https://yourprofile@bitbucket.org/digibri/crm.git
+```
 
 3. Modify database configuration in settings.py
     'HOST':'127.0.0.1' to   'HOST':'db'
